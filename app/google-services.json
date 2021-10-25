@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "802312808001",
+    "firebase_url": "https://attendece-app-92309-default-rtdb.firebaseio.com",
+    "project_id": "attendece-app-92309",
+    "storage_bucket": "attendece-app-92309.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802312808001:android:dc730ccf5cef73ec1708c0",
+        "android_client_info": {
+          "package_name": "com.dimits.dimitsattendece"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "802312808001-9r8st3fuoh6del029pe9algicljbtedc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACX15pR9o6w4FKQg0B1J9jRlvZ--XXwes"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "802312808001-9r8st3fuoh6del029pe9algicljbtedc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802312808001:android:da9c5380d50ec7a11708c0",
+        "android_client_info": {
+          "package_name": "com.dimits.dimitsattendence"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "802312808001-9r8st3fuoh6del029pe9algicljbtedc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACX15pR9o6w4FKQg0B1J9jRlvZ--XXwes"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "802312808001-9r8st3fuoh6del029pe9algicljbtedc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
