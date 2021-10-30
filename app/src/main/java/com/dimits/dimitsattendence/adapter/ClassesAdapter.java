@@ -1,6 +1,7 @@
 package com.dimits.dimitsattendence.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.dimits.dimitsattendence.ClassActivity;
 import com.dimits.dimitsattendence.R;
 import com.dimits.dimitsattendence.common.Common;
 import com.dimits.dimitsattendence.model.ClassModel;
@@ -35,7 +37,7 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.MyViewHo
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.class_item,parent,false));
+        return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.class_item, parent, false));
     }
 
     @Override
@@ -46,7 +48,8 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.MyViewHo
             @Override
             public void onClick(View view) {
                 Common.currentClass = classModel;
-                Toast.makeText(context, "Class Selected :" + Common.currentClass.getName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, ClassActivity.class);
+                context.startActivity(intent);
             }
         });
 
@@ -57,7 +60,7 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.MyViewHo
         return classModels.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    public static class MyViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.txt_class_name)
         TextView txt_class_name;
         @BindView(R.id.img_class)

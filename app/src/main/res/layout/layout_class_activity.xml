@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ClassActivity">
+
+    <TextView
+        android:id="@+id/class_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="200dp"
+        android:fontFamily="sans-serif-light"
+        android:text="Class Name"
+        android:textColor="#5cc8d7"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Students"
+        android:layout_centerInParent="true"
+        android:id="@+id/students_btn"
+        android:background="@color/black"
+        android:textColor="@android:color/white"
+        app:cornerRadius="20dp" />
+    <Button
+        android:layout_margin="10dp"
+        android:layout_below="@+id/students_btn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Attendance"
+        android:layout_centerInParent="true"
+        android:id="@+id/attendance_btn"
+        android:background="@color/black"
+        android:textColor="@android:color/white"
+        app:cornerRadius="20dp" />
+
+    <Button
+        android:layout_below="@id/attendance_btn"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Add Student"
+        android:layout_centerInParent="true"
+        android:id="@+id/add_students_btn"
+        android:background="@color/black"
+        android:textColor="@android:color/white"
+        app:cornerRadius="20dp" />
+
+
+</RelativeLayout>
