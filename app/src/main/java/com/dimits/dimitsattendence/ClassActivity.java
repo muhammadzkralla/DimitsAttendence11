@@ -31,6 +31,8 @@ public class ClassActivity extends AppCompatActivity {
     Button students_btn;
     Button attendance_btn;
     Button add_students_btn;
+    Button reports_btn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,9 +41,18 @@ public class ClassActivity extends AppCompatActivity {
         students_btn = (Button) findViewById(R.id.students_btn);
         attendance_btn = (Button)findViewById(R.id.attendance_btn);
         add_students_btn = (Button)findViewById(R.id.add_students_btn);
+        reports_btn = (Button)findViewById(R.id.reports_btn);
         classModel = Common.currentClass;
 
         class_name.setText(classModel.getName());
+
+        reports_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent reportsIntent = new Intent(ClassActivity.this,Reports.class);
+                startActivity(reportsIntent);
+            }
+        });
 
         attendance_btn.setOnClickListener(new View.OnClickListener() {
             @Override

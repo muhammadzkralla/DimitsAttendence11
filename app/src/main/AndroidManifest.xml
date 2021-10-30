@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
         <activity
+            android:name=".SpecificAttendanceReport"
+            android:exported="true" />
+        <activity
+            android:name=".Reports"
+            android:exported="true" />
+        <activity
             android:name=".AttendanceActivity"
             android:exported="true" />
         <activity
