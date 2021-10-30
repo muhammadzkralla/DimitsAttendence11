@@ -37,10 +37,19 @@ public class ClassActivity extends AppCompatActivity {
         setContentView(R.layout.layout_class_activity);
         class_name = (TextView) findViewById(R.id.class_name);
         students_btn = (Button) findViewById(R.id.students_btn);
+        attendance_btn = (Button)findViewById(R.id.attendance_btn);
         add_students_btn = (Button)findViewById(R.id.add_students_btn);
         classModel = Common.currentClass;
 
         class_name.setText(classModel.getName());
+
+        attendance_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent attendanceIntent = new Intent(ClassActivity.this,AttendanceActivity.class);
+                startActivity(attendanceIntent);
+            }
+        });
 
         add_students_btn.setOnClickListener(new View.OnClickListener() {
             @Override

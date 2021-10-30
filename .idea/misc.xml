@@ -3,10 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/pc/AndroidStudioProjects/DimitsAttendence/app/src/main/res/layout/activity_attendance.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/DimitsAttendence/app/src/main/res/layout/activity_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/DimitsAttendence/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/DimitsAttendence/app/src/main/res/layout/activity_main2.xml" value="0.2" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/DimitsAttendence/app/src/main/res/layout/activity_students.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/pc/AndroidStudioProjects/DimitsAttendence/app/src/main/res/layout/attendance_item.xml" value="0.264" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/DimitsAttendence/app/src/main/res/layout/class_item.xml" value="0.1792452830188679" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/DimitsAttendence/app/src/main/res/layout/layout_add_student.xml" value="0.16621376811594202" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/DimitsAttendence/app/src/main/res/layout/layout_register.xml" value="0.1793478260869565" />
