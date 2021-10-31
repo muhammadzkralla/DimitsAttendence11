@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity {
     private void showBannedDialog() {
         androidx.appcompat.app.AlertDialog.Builder banned = new androidx.appcompat.app.AlertDialog.Builder(this);
         banned.setTitle("Ban Alert !");
-        banned.setMessage("We are sorry, You have been banned because you have violated our Chatting Rules.");
+        banned.setMessage("We are sorry, You have been banned because you have violated our Rules.");
         banned.setNegativeButton("Close the app", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
