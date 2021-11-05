@@ -3,6 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/AndroidStudioProjects/DimitsAttendence11/app/src/main/res/layout/activity_attendance.xml" value="0.2246376811594203" />
+        <entry key="..\:/AndroidStudioProjects/DimitsAttendence11/app/src/main/res/layout/activity_reports.xml" value="0.2246376811594203" />
+        <entry key="..\:/AndroidStudioProjects/DimitsAttendence11/app/src/main/res/layout/activity_specific_attendance_report.xml" value="0.2246376811594203" />
+        <entry key="..\:/AndroidStudioProjects/DimitsAttendence11/app/src/main/res/layout/activity_student_profile.xml" value="0.4742468415937804" />
+        <entry key="..\:/AndroidStudioProjects/DimitsAttendence11/app/src/main/res/layout/activity_students.xml" value="0.2246376811594203" />
+        <entry key="..\:/AndroidStudioProjects/DimitsAttendence11/app/src/main/res/layout/attendance_item.xml" value="0.2246376811594203" />
+        <entry key="..\:/AndroidStudioProjects/DimitsAttendence11/app/src/main/res/layout/class_item.xml" value="0.2246376811594203" />
+        <entry key="..\:/AndroidStudioProjects/DimitsAttendence11/app/src/main/res/layout/layout_class_activity.xml" value="0.2246376811594203" />
+        <entry key="..\:/AndroidStudioProjects/DimitsAttendence11/app/src/main/res/layout/report_item.xml" value="0.2246376811594203" />
+        <entry key="..\:/AndroidStudioProjects/DimitsAttendence11/app/src/main/res/layout/specific_attendance_item.xml" value="0.2246376811594203" />
+        <entry key="..\:/AndroidStudioProjects/DimitsAttendence11/app/src/main/res/layout/specific_student_item.xml" value="0.24320652173913043" />
+        <entry key="..\:/AndroidStudioProjects/DimitsAttendence11/app/src/main/res/layout/student_item.xml" value="0.2246376811594203" />
+        <entry key="..\:/AndroidStudioProjects/DimitsAttendence11/app/src/main/res/layout/student_profile.xml" value="0.4" />
+        <entry key="..\:/AndroidStudioProjects/DimitsAttendence11/app/src/main/res/layout/studentpor.xml" value="0.2246376811594203" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/DimitsAttendence/app/src/main/res/layout/activity_attendance.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/DimitsAttendence/app/src/main/res/layout/activity_home.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/pc/AndroidStudioProjects/DimitsAttendence/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />

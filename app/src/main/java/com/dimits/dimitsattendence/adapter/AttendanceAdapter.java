@@ -56,6 +56,7 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
                 model.setName(studentModel.getName());
                 model.setId(studentModel.getId());
                 model.setAttendance("false");
+                model.setDate(date);
                 Toast.makeText(context, "false for : "+studentModel.getName(), Toast.LENGTH_SHORT).show();
                 FirebaseDatabase.getInstance().getReference("Classes").child(Common.currentClass.getName())
                         .child("attendance").child(date)
@@ -71,6 +72,7 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
                 model.setName(studentModel.getName());
                 model.setId(studentModel.getId());
                 model.setAttendance("true");
+                model.setDate(date);
                 Toast.makeText(context, "true for : "+studentModel.getName(), Toast.LENGTH_SHORT).show();
                 FirebaseDatabase.getInstance().getReference("Classes").child(Common.currentClass.getName())
                         .child("attendance").child(date)

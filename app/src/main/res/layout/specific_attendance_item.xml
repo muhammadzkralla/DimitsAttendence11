@@ -52,6 +52,15 @@
                 android:textSize="20sp"
                 android:layout_below="@+id/status"/>
 
+            <TextView
+                android:id="@+id/report_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txt_id"
+                android:text="30-10-2021"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
 
 
 

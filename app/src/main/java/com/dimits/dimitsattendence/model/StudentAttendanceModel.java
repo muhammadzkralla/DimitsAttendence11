@@ -1,7 +1,7 @@
 package com.dimits.dimitsattendence.model;
 
 public class StudentAttendanceModel {
-    String name,id,attendance;
+    String name,id,attendance,Date;
 
     public StudentAttendanceModel() {
     }
@@ -10,6 +10,21 @@ public class StudentAttendanceModel {
         this.name = name;
         this.id = id;
         this.attendance = attendance;
+    }
+
+    public StudentAttendanceModel(String name, String id, String attendance, String date) {
+        this.name = name;
+        this.id = id;
+        this.attendance = attendance;
+        Date = date;
+    }
+
+    public String getDate() {
+        return Date;
+    }
+
+    public void setDate(String date) {
+        Date = date;
     }
 
     public String getName() {

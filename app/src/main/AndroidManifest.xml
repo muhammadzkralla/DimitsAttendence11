@@ -10,6 +10,11 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Design.NoActionBar">
         <activity
+            android:name=".StudentProfile"
+            android:exported="true"
+            android:label="@string/title_activity_student_profile"
+            android:theme="@style/NoActionBar" />
+        <activity
             android:name=".SpecificAttendanceReport"
             android:exported="true" />
         <activity

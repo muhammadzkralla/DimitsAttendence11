@@ -35,6 +35,13 @@ public class SpecificAttendanceAdapter extends RecyclerView.Adapter<SpecificAtte
         holder.student_name.setText(model.getName());
         holder.status.setText(model.getAttendance());
         holder.id.setText(model.getId());
+        if(model.getDate() == null){
+            holder.date.setVisibility(View.INVISIBLE);
+        }else {
+            holder.date.setText(model.getDate());
+
+        }
+
 
     }
 
@@ -44,13 +51,14 @@ public class SpecificAttendanceAdapter extends RecyclerView.Adapter<SpecificAtte
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
-        TextView student_name,status,id;
+        TextView student_name,status,id,date;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             student_name = itemView.findViewById(R.id.student_name);
             status = itemView.findViewById(R.id.status);
             id = itemView.findViewById(R.id.txt_id);
+            date = itemView.findViewById(R.id.report_date);
         }
     }
 }
