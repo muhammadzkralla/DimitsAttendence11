@@ -32,9 +32,7 @@ public class SpecificAttendanceReport extends AppCompatActivity {
         setContentView(R.layout.activity_specific_attendance_report);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_specific);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         downloadReport();
     }

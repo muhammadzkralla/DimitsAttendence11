@@ -35,9 +35,7 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_classes);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         downloadClasses();
     }

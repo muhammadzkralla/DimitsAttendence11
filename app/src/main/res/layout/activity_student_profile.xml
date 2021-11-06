@@ -8,25 +8,60 @@
 
 
     <TextView
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="30sp"
+        android:textColor="@android:color/black"
         android:id="@+id/student_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="StudentName" />
 
+
     <TextView
-        android:id="@+id/textView2"
+        android:layout_marginLeft="10dp"
+        android:textSize="24sp"
+        android:id="@+id/student_id_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="txt_id"
+        android:text="Student ID : "
+        android:layout_below="@+id/student_name"/>
+
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:textSize="24sp"
+        android:textColor="@android:color/holo_blue_bright"
+        android:id="@+id/student_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Student ID : "
+        android:layout_toRightOf="@+id/student_id_txt"
         android:layout_below="@+id/student_name"/>
 
 
+
     <TextView
+        android:layout_marginLeft="10dp"
+        android:textSize="24sp"
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Attendance"
-        android:layout_below="@+id/textView2"/>
+        android:text="Total Days Off :"
+        android:layout_below="@+id/student_id"/>
+
+    <TextView
+        android:textSize="24sp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_toRightOf="@+id/textView3"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/total_days_off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="11"
+        android:layout_below="@+id/student_id"/>
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

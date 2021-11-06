@@ -29,9 +29,7 @@ public class Reports extends AppCompatActivity {
         setContentView(R.layout.activity_reports);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_reports);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         downloadReports();
     }

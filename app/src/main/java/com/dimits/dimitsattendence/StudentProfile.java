@@ -6,25 +6,18 @@ import android.os.Bundle;
 import com.dimits.dimitsattendence.adapter.SpecificAttendanceAdapter;
 import com.dimits.dimitsattendence.common.Common;
 import com.dimits.dimitsattendence.model.StudentAttendanceModel;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
@@ -33,7 +26,8 @@ import java.util.Iterator;
 import java.util.List;
 
 public class StudentProfile extends AppCompatActivity {
-    TextView StudentName,txt_id;
+    TextView StudentName,txt_id,total_days_off;
+    private int INITIAL_DAYS_OFF = 0;
 
     Bundle intent;
     RecyclerView recyclerView;
@@ -52,8 +46,9 @@ public class StudentProfile extends AppCompatActivity {
         if(intent != null){
             StudentName = findViewById(R.id.student_name);
             StudentName.setText(intent.getString("name"));
-            txt_id = findViewById(R.id.textView2);
+            txt_id = findViewById(R.id.student_id);
             txt_id.setText(intent.getString("id"));
+            total_days_off = findViewById(R.id.total_days_off);
         }else {
             Toast.makeText(StudentProfile.this, "Something wrong", Toast.LENGTH_SHORT).show();
         }
@@ -91,7 +86,12 @@ public class StudentProfile extends AppCompatActivity {
                                 DataSnapshot dataSnapshot1 = iterator.next();
 
                                 StudentAttendanceModel studentAttendanceModel = dataSnapshot1.getValue(StudentAttendanceModel.class);
-                                if (studentAttendanceModel.getId().equals(intent.getString("id"))) {
+                                assert studentAttendanceModel != null;
+                                if (studentAttendanceModel.getId().equals(intent.getString("id"))
+                                        && studentAttendanceModel.getAttendance().equals("false")) {
+                                    INITIAL_DAYS_OFF += 1;
+                                    total_days_off.setText(" " + INITIAL_DAYS_OFF);
+
                                     studentAttendanceModelList.add(studentAttendanceModel);
                                 }
 

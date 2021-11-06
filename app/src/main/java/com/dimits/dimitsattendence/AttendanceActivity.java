@@ -30,9 +30,7 @@ public class AttendanceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_attendance);
         recyclerView = (RecyclerView) findViewById(R.id.recycler_attendance);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         downloadStudents();
     }
