@@ -9,4 +9,9 @@
 
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="info">Please, select a button to do a specific action.</string>
+    <string name="info_1">1- Students Button to show Students in the Class.</string>
+    <string name="info_2">2- Attendance Button to take the attendance of the day.</string>
+    <string name="info_3">3- Add Student Button to Add a new Student to the Class.</string>
+    <string name="info_4">4- Reports Button to view the past Attendances of the class.</string>
 </resources>

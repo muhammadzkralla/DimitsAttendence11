@@ -10,22 +10,77 @@
         android:id="@+id/class_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="10dp"
         android:fontFamily="sans-serif-light"
         android:text="Class Name"
-        android:textColor="#5cc8d7"
-        android:textSize="40sp"
+        android:textColor="@color/red"
+        android:textSize="32sp"
         android:textStyle="bold" />
 
+    <TextView
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/info_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/class_name"
+        android:text="@string/info"
+        android:textStyle="italic"
+        android:fontFamily="sans-serif-light"
+        android:textColor="@color/red"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/info_1"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/medium_blue"
+        android:layout_below="@+id/info_txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/info_1"/>
+
+    <TextView
+        android:layout_marginTop="8dp"
+        android:id="@+id/info_2"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/medium_blue"
+        android:layout_below="@+id/info_1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/info_2"/>
+
+    <TextView
+        android:layout_marginTop="8dp"
+        android:id="@+id/info_3"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/medium_blue"
+        android:layout_below="@+id/info_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/info_3"/>
+
+    <TextView
+        android:layout_marginTop="8dp"
+        android:id="@+id/info_4"
+        android:layout_marginLeft="20dp"
+        android:textColor="@color/medium_blue"
+        android:layout_below="@+id/info_3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/info_4"/>
+
+
     <Button
+        android:layout_marginTop="40dp"
+        android:layout_below="@+id/info_4"
+        android:id="@+id/students_btn"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:text="Students"
         android:layout_centerInParent="true"
-        android:id="@+id/students_btn"
-        android:background="@color/black"
-        android:textColor="@android:color/white"
+        android:background="@color/medium_blue"
+        android:text="Students"
+        android:textColor="@color/red"
         app:cornerRadius="20dp" />
     <Button
         android:layout_margin="10dp"
@@ -35,9 +90,10 @@
         android:text="Attendance"
         android:layout_centerInParent="true"
         android:id="@+id/attendance_btn"
-        android:background="@color/black"
-        android:textColor="@android:color/white"
-        app:cornerRadius="20dp" />
+        android:background="@color/medium_blue"
+        android:textColor="@color/red"
+        app:cornerRadius="20dp"
+        android:elevation="90dp"/>
 
     <Button
         android:layout_below="@id/attendance_btn"
@@ -46,8 +102,8 @@
         android:text="Add Student"
         android:layout_centerInParent="true"
         android:id="@+id/add_students_btn"
-        android:background="@color/black"
-        android:textColor="@android:color/white"
+        android:background="@color/medium_blue"
+        android:textColor="@color/red"
         app:cornerRadius="20dp" />
 
     <Button
@@ -58,8 +114,8 @@
         android:text="Reports"
         android:layout_centerInParent="true"
         android:id="@+id/reports_btn"
-        android:background="@color/black"
-        android:textColor="@android:color/white"
+        android:background="@color/medium_blue"
+        android:textColor="@color/red"
         app:cornerRadius="20dp" />
 
 
