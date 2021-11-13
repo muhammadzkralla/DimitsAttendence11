@@ -6,7 +6,21 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
+    <TextView
+        android:layout_marginLeft="10dp"
+        android:id="@+id/TITLE"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="sans-serif-light"
+        android:text="Classes Accessed : "
+        android:textColor="@color/red"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@+id/TITLE"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/recycler_classes"/>

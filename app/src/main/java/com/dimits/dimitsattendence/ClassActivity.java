@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -37,6 +38,8 @@ public class ClassActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_class_activity);
+        Window window = ClassActivity.this.getWindow();
+        window.setStatusBarColor(getResources().getColor(R.color.medium_blue));
         class_name = (TextView) findViewById(R.id.class_name);
         students_btn = (Button) findViewById(R.id.students_btn);
         attendance_btn = (Button)findViewById(R.id.attendance_btn);

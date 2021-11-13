@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -63,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         startConnection();
+        Window window = MainActivity.this.getWindow();
+        window.setStatusBarColor(getResources().getColor(R.color.black));
     }
 
     private void startConnection() {

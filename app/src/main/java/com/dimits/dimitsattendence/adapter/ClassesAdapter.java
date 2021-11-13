@@ -77,4 +77,21 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.MyViewHo
 
 
     }
+
+    @Override
+    public int getItemViewType(int position) {
+        if (classModels.size() == 1){
+            return 0;
+        }else{
+            if (classModels.size() % 2 == 0){
+                return 0;
+            }
+            else {
+                if(position > 1 && position == classModels.size()-1)
+                    return 1;
+                else
+                    return 0;
+            }
+        }
+    }
 }
