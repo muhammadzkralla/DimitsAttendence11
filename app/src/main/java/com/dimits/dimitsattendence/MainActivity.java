@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         startConnection();
         Window window = MainActivity.this.getWindow();
-        window.setStatusBarColor(getResources().getColor(R.color.black));
+        window.setStatusBarColor(getResources().getColor(R.color.white));
     }
 
     private void startConnection() {

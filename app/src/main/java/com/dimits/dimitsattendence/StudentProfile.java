@@ -1,6 +1,7 @@
 package com.dimits.dimitsattendence;
 
 import android.content.Intent;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import com.dimits.dimitsattendence.adapter.SpecificAttendanceAdapter;
@@ -8,8 +9,11 @@ import com.dimits.dimitsattendence.common.Common;
 import com.dimits.dimitsattendence.model.StudentAttendanceModel;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.text.Html;
+import android.view.Window;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +43,11 @@ public class StudentProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_profile);
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.medium_blue)));
+        actionBar.setTitle(Html.fromHtml("<font color='#FF000000'>Dimits Attendance </font>"));
+        Window window = StudentProfile.this.getWindow();
+        window.setStatusBarColor(getResources().getColor(R.color.medium_blue));
 
          intent = getIntent().getExtras();
 

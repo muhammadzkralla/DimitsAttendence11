@@ -13,7 +13,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginBottom="10dp"
         android:textSize="30sp"
-        android:textColor="@android:color/black"
+        android:textColor="@color/red"
         android:id="@+id/student_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
     <TextView
         android:layout_marginLeft="10dp"
         android:textSize="24sp"
-        android:textColor="@android:color/holo_blue_bright"
+        android:textColor="@color/light_blue"
         android:id="@+id/student_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,6 +64,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="10dp"
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -13,17 +13,21 @@
             android:name=".StudentProfile"
             android:exported="true"
             android:label="@string/title_activity_student_profile"
-            android:theme="@style/NoActionBar" />
+            android:theme="@style/Theme.Design.Light" />
         <activity
+            android:theme="@style/Theme.Design.Light"
             android:name=".SpecificAttendanceReport"
             android:exported="true" />
         <activity
+            android:theme="@style/Theme.Design.Light"
             android:name=".Reports"
             android:exported="true" />
         <activity
+            android:theme="@style/Theme.Design.Light"
             android:name=".AttendanceActivity"
             android:exported="true" />
         <activity
+            android:theme="@style/Theme.Design.Light"
             android:name=".StudentsActivity"
             android:exported="true" />
         <activity
