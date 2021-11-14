@@ -8,41 +8,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:802312808001:android:dc730ccf5cef73ec1708c0",
+        "mobilesdk_app_id": "1:802312808001:android:5b2b50ad2d52d3911708c0",
         "android_client_info": {
-          "package_name": "com.dimits.dimitsattendece"
+          "package_name": "com.dimits.dimitsAttendance"
         }
       },
       "oauth_client": [
         {
-          "client_id": "802312808001-9r8st3fuoh6del029pe9algicljbtedc.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyACX15pR9o6w4FKQg0B1J9jRlvZ--XXwes"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "802312808001-9r8st3fuoh6del029pe9algicljbtedc.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:802312808001:android:da9c5380d50ec7a11708c0",
-        "android_client_info": {
-          "package_name": "com.dimits.dimitsattendence"
-        }
-      },
-      "oauth_client": [
+          "client_id": "802312808001-bdi7ing7g56kpos0jiv9j7qom6cjkab7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dimits.dimitsAttendance",
+            "certificate_hash": "82f451d409616ac435c1ec739f4b228f9d6cda59"
+          }
+        },
         {
           "client_id": "802312808001-9r8st3fuoh6del029pe9algicljbtedc.apps.googleusercontent.com",
           "client_type": 3

@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -37,12 +38,8 @@ import io.reactivex.disposables.CompositeDisposable;
 
 public class MainActivity extends AppCompatActivity {
     //initialize the variables
-    private static int APP_REQUEST_CODE = 9696;
-    private FirebaseAuth firebaseAuth;
-    private FirebaseAuth.AuthStateListener listener;
+
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
-    private DatabaseReference userRef;
-    private List<AuthUI.IdpConfig> providers;
 
     @Override
     protected void onStart() {
@@ -51,7 +48,13 @@ public class MainActivity extends AppCompatActivity {
         ConnectivityManager manager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = manager.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
-            firebaseAuth.addAuthStateListener(listener);
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    goToHomeActivity();
+                }
+            },3000);
         }
         else{
             Toast.makeText(this, "Your are offline, please connect to the Internet", Toast.LENGTH_SHORT).show();
@@ -63,140 +66,26 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        startConnection();
         Window window = MainActivity.this.getWindow();
         window.setStatusBarColor(getResources().getColor(R.color.white));
     }
 
-    private void startConnection() {
-        providers = Arrays.asList(new AuthUI.IdpConfig.PhoneBuilder().build());
-        userRef = FirebaseDatabase.getInstance().getReference("Users");
-        firebaseAuth = FirebaseAuth.getInstance();
-        listener = firebaseAuth -> {
-            FirebaseUser user = firebaseAuth.getCurrentUser();
-            if (user != null) {
-                checkUserFromFirebase(user);
-            } else {
-                Login();
-            }
 
-        };
-    }
 
-    private void checkUserFromFirebase(FirebaseUser user) {
-        userRef.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()) {
-                    UserModel usersModel = snapshot.getValue(UserModel.class);
-                    if (usersModel.getBanned().equals("1"))
-                        showBannedDialog();
-                    else
-                        goToHomeActivity(usersModel);
-                } else {
-                    showRegisterDialog(user);
-                }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                //dialog.dismiss();
-                Toast.makeText(MainActivity.this, "" + error.getMessage(), Toast.LENGTH_SHORT).show();
-
-            }
-        });
-    }
-
-    private void Login() {
-        startActivityForResult(AuthUI.getInstance()
-                        .createSignInIntentBuilder()
-                        .setAvailableProviders(providers).build(),
-                APP_REQUEST_CODE);
-    }
-
-    private void showRegisterDialog(FirebaseUser user) {
-        androidx.appcompat.app.AlertDialog.Builder builder = new androidx.appcompat.app.AlertDialog.Builder(this);
-        builder.setTitle("Register");
-        builder.setMessage("Please fill information");
-        //Inflate the view
-        View itemView = LayoutInflater.from(this).inflate(R.layout.layout_register, null);
-        //Find the Views
-        EditText etName =  itemView.findViewById(R.id.et_name);
-        EditText etPhone = itemView.findViewById(R.id.et_phone);
-        //set Data
-        etPhone.setText(user.getPhoneNumber());
-        //Action
-        builder.setNegativeButton("CANCEL", (dialogInterface, i) -> {
-            dialogInterface.dismiss();
-        });
-        builder.setPositiveButton("REGISTER", (dialogInterface, i) -> {
-            UserModel userModel = new UserModel();
-            if (TextUtils.isEmpty(etName.getText().toString())) {
-                Toast.makeText(this, "Please enter your name", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            //Fill the DataBase
-            userModel.setUid(user.getUid());
-            userModel.setBanned("0");
-            userModel.setName(etName.getText().toString());
-            userModel.setPhone(etPhone.getText().toString());
-            userRef.child(user.getUid()).setValue(userModel)
-                    .addOnCompleteListener(task -> {
-                        if (task.isSuccessful()) {
-                            dialogInterface.dismiss();
-                            Toast.makeText(MainActivity.this, "Congratulation! Register Successfully", Toast.LENGTH_SHORT).show();
-                            goToHomeActivity(userModel);
-                        }
-                    });
-        });
-
-        builder.setView(itemView);
-        androidx.appcompat.app.AlertDialog dialog = builder.create();
-        dialog.show();
-
-    }
-
-    private void goToHomeActivity(UserModel usersModel) {
-        Common.currentUser = usersModel; //Important,you need always assign value for it before use
+    private void goToHomeActivity() {
         startActivity(new Intent(MainActivity.this, HomeActivity.class));
         finish();
     }
 
-    private void showBannedDialog() {
-        androidx.appcompat.app.AlertDialog.Builder banned = new androidx.appcompat.app.AlertDialog.Builder(this);
-        banned.setTitle("Ban Alert !");
-        banned.setMessage("We are sorry, You have been banned because you have violated our Rules.");
-        banned.setNegativeButton("Close the app", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finish();
-            }
-        });
-        banned.show();
-    }
+
 
     @Override
     protected void onStop() {
         super.onStop();
-        if (listener != null)
-            firebaseAuth.removeAuthStateListener(listener);
         compositeDisposable.clear();
     }
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == APP_REQUEST_CODE)
-        {
 
-            IdpResponse response = IdpResponse.fromResultIntent(data);
-            if(resultCode == RESULT_OK)
-            {
-                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-            }else{
-                Toast.makeText(this,"Failed sign in!!",Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
     private void showConnectionDialog() {
         AlertDialog.Builder alertDialog = new AlertDialog.Builder(MainActivity.this);
         alertDialog.setTitle("Internet Connection error");
