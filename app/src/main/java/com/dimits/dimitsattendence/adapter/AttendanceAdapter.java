@@ -16,7 +16,10 @@ import com.dimits.dimitsattendence.R;
 import com.dimits.dimitsattendence.common.Common;
 import com.dimits.dimitsattendence.model.StudentAttendanceModel;
 import com.dimits.dimitsattendence.model.StudentModel;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -49,10 +52,32 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
         holder.student_name_att.setText(studentModel.getName());
         holder.txt_id_att.setText(studentModel.getId());
 
+        FirebaseDatabase.getInstance().getReference("Classes").child(Common.currentClass.getName())
+                .child("attendance").child(date)
+                .addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        if (snapshot.exists()){
+                            for (DataSnapshot dataSnapshot : snapshot.getChildren()){
+                                StudentAttendanceModel studentAttendanceModel = dataSnapshot.getValue(StudentAttendanceModel.class);
+                                if (studentAttendanceModel.getId().equals(studentModel.getId())){
+                                    holder.attendance_done.setVisibility(View.VISIBLE);
+                                }
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+
+                    }
+                });
+
         holder.wrong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 StudentAttendanceModel model = new StudentAttendanceModel();
+                holder.attendance_done.setVisibility(View.VISIBLE);
                 model.setName(studentModel.getName());
                 model.setId(studentModel.getId());
                 model.setAttendance("false");
@@ -69,6 +94,7 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
             @Override
             public void onClick(View view) {
                 StudentAttendanceModel model = new StudentAttendanceModel();
+                holder.attendance_done.setVisibility(View.VISIBLE);
                 model.setName(studentModel.getName());
                 model.setId(studentModel.getId());
                 model.setAttendance("true");
@@ -91,6 +117,7 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
         TextView student_name_att;
+        TextView attendance_done;
         TextView txt_id_att;
         ImageView wrong;
         ImageView check;
@@ -101,6 +128,7 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
             student_name_att = itemView.findViewById(R.id.student_name_att);
             wrong = itemView.findViewById(R.id.wrong_btn);
             check = itemView.findViewById(R.id.true_btn);
+            attendance_done = itemView.findViewById(R.id.attendance_done);
         }
     }
 }

@@ -22,8 +22,6 @@
             android:layout_height="140dp"
             android:layout_alignParentLeft="true" />
 
-
-
             <TextView
                 android:textStyle="bold"
                 android:layout_marginTop="30dp"
@@ -37,6 +35,17 @@
                 android:fontFamily="sans-serif-black"
                 android:layout_toRightOf="@+id/student_img"
                 android:layout_alignParentTop="true" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Attendance taken"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="3dp"
+            android:textColor="#388E3C"
+            android:visibility="gone"
+            android:id="@+id/attendance_done"/>
 
         <TextView
             android:layout_marginTop="5dp"
