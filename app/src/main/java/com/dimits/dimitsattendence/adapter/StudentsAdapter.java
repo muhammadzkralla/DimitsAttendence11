@@ -24,9 +24,11 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyViewHolder> {
+    //initialize the variables
     Context context;
     List<StudentModel> studentModels = new ArrayList<>();
 
+    // A public constructor to get the data from the StudentActivity Class
     public StudentsAdapter(Context context, List<StudentModel> studentModels) {
         this.context = context;
         this.studentModels = studentModels;
@@ -35,11 +37,13 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //inflating the layout
         return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.student_item, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        // here we inflate the data we got from the activity into items also one by one
         StudentModel studentModel = studentModels.get(position);
         holder.student_name.setText(studentModel.getName());
         holder.txt_id.setText(studentModel.getId());
@@ -48,10 +52,12 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // on clicking on a specific student to open their profile, store his/her id to call later from the StudentProfile Activity
                 SharedPreferences.Editor editor = context.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
                 editor.putString("id", studentModel.getId());
                 editor.apply();
 
+                // open the StudentProfile Activity and pass the required info to there
                 Intent intent = new Intent(context.getApplicationContext(), StudentProfile.class);
                 intent.putExtra("id",studentModel.getId());
                 intent.putExtra("name",studentModel.getName());
@@ -66,7 +72,8 @@ public class StudentsAdapter extends RecyclerView.Adapter<StudentsAdapter.MyView
         return studentModels.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public static class MyViewHolder extends RecyclerView.ViewHolder{
+        //initializing views of the layout
         @BindView(R.id.student_name)
         TextView student_name;
         @BindView(R.id.txt_id)

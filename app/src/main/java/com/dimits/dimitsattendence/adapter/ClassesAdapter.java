@@ -26,9 +26,10 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.MyViewHolder> {
+    //initialize the variables
     Context context;
     private List<ClassModel> classModels = new ArrayList<>();
-
+    // A public constructor to get the data from the HomeActivity Class
     public ClassesAdapter(Context context, List<ClassModel> classModels) {
         this.context = context;
         this.classModels = classModels;
@@ -37,17 +38,21 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.MyViewHo
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //inflating the layout
         return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.class_item, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        // here we inflate the data we got from the activity into items also one by one
         ClassModel classModel = classModels.get(position);
         holder.txt_class_name.setText(classModel.getName());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // on clicking on a specific Class store its object in Common Class to reuse later
                 Common.currentClass = classModel;
+                // open the activity of this clicked class
                 Intent intent = new Intent(context, ClassActivity.class);
                 context.startActivity(intent);
             }
@@ -61,6 +66,7 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.MyViewHo
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
+        //initializing views of the layout
         @BindView(R.id.txt_class_name)
         TextView txt_class_name;
         @BindView(R.id.img_class)
@@ -80,6 +86,7 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.MyViewHo
 
     @Override
     public int getItemViewType(int position) {
+        // here we check the size of the items to arrange them correctly in the Activity
         if (classModels.size() == 1){
             return 0;
         }else{

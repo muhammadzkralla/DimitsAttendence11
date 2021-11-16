@@ -33,7 +33,8 @@
         <activity
             android:name=".ClassActivity"
             android:exported="true"
-            android:theme="@style/Theme.Design.Light"/>
+            android:theme="@style/Theme.Design.Light"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".HomeActivity"
             android:exported="true"

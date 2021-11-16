@@ -38,7 +38,6 @@ import io.reactivex.disposables.CompositeDisposable;
 
 public class MainActivity extends AppCompatActivity {
     //initialize the variables
-
     private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
     @Override
@@ -48,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         ConnectivityManager manager = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = manager.getActiveNetworkInfo();
         if (networkInfo != null && networkInfo.isConnected()) {
+            //set a handler to delay the splash screen for 3 seconds.
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             },3000);
         }
         else{
+            //user is offline, enquire him.
             Toast.makeText(this, "Your are offline, please connect to the Internet", Toast.LENGTH_SHORT).show();
             showConnectionDialog();
         }
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //set the status bar color to white
         Window window = MainActivity.this.getWindow();
         window.setStatusBarColor(getResources().getColor(R.color.white));
     }
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void goToHomeActivity() {
+        //starting the app after the splash screen
         startActivity(new Intent(MainActivity.this, HomeActivity.class));
         finish();
     }
@@ -93,15 +96,18 @@ public class MainActivity extends AppCompatActivity {
         alertDialog.setPositiveButton("Reconnect", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                //Retry connection with calling the onStart() method
                 onStart();
             }
         });
         alertDialog.setNegativeButton("Close the app", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                //User can't get online, close the app by calling the finish() method
                 finish();
             }
         });
+        //show the connection Dialog
         alertDialog.show();
     }
 
