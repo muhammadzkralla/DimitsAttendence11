@@ -21,13 +21,13 @@
         android:textStyle="bold" />
 
     <TextView
-        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/main"
         android:layout_centerHorizontal="true"
         android:fontFamily="serif"
-        android:text="Queen of peace Schools"
+        android:text="School Attendance App"
+        android:textColor="@color/black"
         android:textSize="24sp"
         android:textStyle="italic" />
 
