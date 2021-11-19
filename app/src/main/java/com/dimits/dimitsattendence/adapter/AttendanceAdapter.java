@@ -30,11 +30,14 @@ import java.util.Locale;
 
 
 public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.MyViewHolder> {
+    // prepare the date format you want to use
     String date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
+    // initialize the variables
     Context context;
     List<StudentModel> studentModels = new ArrayList<>();
 
+    // A public constructor to get the data from the Attendance Class
     public AttendanceAdapter(Context context, List<StudentModel> studentModels) {
         this.context = context;
         this.studentModels = studentModels;
@@ -43,20 +46,24 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //inflating the layout
         return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.attendance_item, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        // here we inflate the data we got from the activity into items also one by one
         StudentModel studentModel = studentModels.get(position);
         holder.student_name_att.setText(studentModel.getName());
         holder.txt_id_att.setText(studentModel.getId());
 
+        // checking if the attendance of a specific user is taken, if so show a sign next to it
         FirebaseDatabase.getInstance().getReference("Classes").child(Common.currentClass.getName())
                 .child("attendance").child(date)
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        // but always avoid nulls :)
                         if (snapshot.exists()){
                             for (DataSnapshot dataSnapshot : snapshot.getChildren()){
                                 StudentAttendanceModel studentAttendanceModel = dataSnapshot.getValue(StudentAttendanceModel.class);
@@ -72,17 +79,19 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
 
                     }
                 });
-
+        // when the user press on the wrong button to make the student absent
         holder.wrong.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // prepare a studentModel object to modify the old one on the firebase
                 StudentAttendanceModel model = new StudentAttendanceModel();
                 holder.attendance_done.setVisibility(View.VISIBLE);
                 model.setName(studentModel.getName());
                 model.setId(studentModel.getId());
                 model.setAttendance("false");
                 model.setDate(date);
-                Toast.makeText(context, "false for : "+studentModel.getName(), Toast.LENGTH_SHORT).show();
+
+                // modify the old student object
                 FirebaseDatabase.getInstance().getReference("Classes").child(Common.currentClass.getName())
                         .child("attendance").child(date)
                         .child(studentModel.getId())
@@ -90,16 +99,19 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
             }
         });
 
+        // when the user press on the wrong button to make the student present
         holder.check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // prepare a studentModel object to modify the old one on the firebase
                 StudentAttendanceModel model = new StudentAttendanceModel();
                 holder.attendance_done.setVisibility(View.VISIBLE);
                 model.setName(studentModel.getName());
                 model.setId(studentModel.getId());
                 model.setAttendance("true");
                 model.setDate(date);
-                Toast.makeText(context, "true for : "+studentModel.getName(), Toast.LENGTH_SHORT).show();
+
+                // modify the old student object
                 FirebaseDatabase.getInstance().getReference("Classes").child(Common.currentClass.getName())
                         .child("attendance").child(date)
                         .child(studentModel.getId())
@@ -116,6 +128,7 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
+        //initializing views of the layout
         TextView student_name_att;
         TextView attendance_done;
         TextView txt_id_att;

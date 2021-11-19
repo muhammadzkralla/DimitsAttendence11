@@ -1,6 +1,7 @@
 package com.dimits.dimitsattendence.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +11,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.dimits.dimitsattendence.ClassActivity;
+import com.dimits.dimitsattendence.HomeActivity;
+import com.dimits.dimitsattendence.MainActivity;
 import com.dimits.dimitsattendence.R;
 import com.dimits.dimitsattendence.common.Common;
 import com.dimits.dimitsattendence.model.ClassModel;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +60,34 @@ public class ClassesAdapter extends RecyclerView.Adapter<ClassesAdapter.MyViewHo
                 // open the activity of this clicked class
                 Intent intent = new Intent(context, ClassActivity.class);
                 context.startActivity(intent);
+            }
+        });
+        // set on long click listener to remove the value of a class
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+                alertDialog.setTitle("DELETE " + classModel.getName() + " ?");
+                alertDialog.setMessage("Choose what to do please :");
+                alertDialog.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Delete the class by its reference
+                        FirebaseDatabase.getInstance().getReference("Classes")
+                                .child(classModel.getName()).removeValue();
+                        // reload the activity
+                        context.startActivity(new Intent(context,HomeActivity.class));
+                    }
+                });
+                alertDialog.setNegativeButton("CANCEL", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                //show the connection Dialog
+                alertDialog.show();
+                return true;
             }
         });
 

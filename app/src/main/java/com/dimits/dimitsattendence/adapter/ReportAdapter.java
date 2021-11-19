@@ -19,9 +19,11 @@ import com.dimits.dimitsattendence.model.StudentAttendanceModel;
 import java.util.List;
 
 public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHolder> {
+    //initialize the variables
     Context context;
     List<String> dates;
 
+    // A public constructor to get the data from the Reports Class
     public ReportAdapter(Context context, List<String> dates) {
         this.context = context;
         this.dates = dates;
@@ -30,16 +32,19 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHold
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        //inflating the layout
         return new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.report_item, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        // here we inflate the data we got from the activity into items also one by one
         String date_txt = dates.get(position);
         holder.report_date.setText(date_txt);
         holder.btn_view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // open the selected report and store it to reuse later
                 Common.selectedReport = date_txt;
                 Intent intent = new Intent(context, SpecificAttendanceReport.class);
                 context.startActivity(intent);
@@ -55,6 +60,7 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.MyViewHold
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{
+        //initializing views of the layout
         TextView report_date;
         Button btn_view;
 
