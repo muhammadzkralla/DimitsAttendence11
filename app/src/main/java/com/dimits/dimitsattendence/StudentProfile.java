@@ -61,8 +61,6 @@ public class StudentProfile extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(specificAttendanceAdapter);
-        specificAttendanceAdapter = new SpecificAttendanceAdapter(getApplicationContext(),studentAttendanceModelList);
 
 
 
@@ -90,6 +88,7 @@ public class StudentProfile extends AppCompatActivity {
 
 
     private void downloadReport() {
+        studentAttendanceModelList = new ArrayList<>();
         // refer to the Correct Reference
         FirebaseDatabase.getInstance().getReference("Classes").child(Common.currentClass.getName())
                 .child("attendance")
@@ -101,7 +100,7 @@ public class StudentProfile extends AppCompatActivity {
                             // for each item under the reference "attendance" do the following :
                             for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
 
-                                // iterator to iterate over each object under the refernce
+                                // iterator to iterate over each object under the reference
                                 Iterator<DataSnapshot> iterator = dataSnapshot.getChildren().iterator();
 
                                 while (iterator.hasNext()) {
@@ -124,7 +123,8 @@ public class StudentProfile extends AppCompatActivity {
                                     }
 
                                 }
-                                specificAttendanceAdapter.notifyDataSetChanged();
+                                specificAttendanceAdapter = new SpecificAttendanceAdapter(getApplicationContext(),studentAttendanceModelList);
+                                recyclerView.setAdapter(specificAttendanceAdapter);
                             }
                         }
 
